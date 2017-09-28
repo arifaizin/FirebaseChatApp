@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="end|center_vertical"
+    android:id="@+id/layoututama"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp">
+
+    <com.github.curioustechizen.ago.RelativeTimeTextView
+        android:id="@+id/timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:maxLines="2"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:textSize="12dp"
+        tools:text="Just Now" />
+
+    <ImageView
+        android:id="@+id/messengerImageView2"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:visibility="gone"
+        tools:src="@drawable/ic_account_round" />
+
+    <Space
+        android:layout_width="8dp"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/viewpucuk2"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/holo_blue_light"
+        android:rotation="45"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layoutbackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="-6dp"
+        android:background="@drawable/balon_message"
+        android:gravity="right"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/messengerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:textColor="#ffffff"
+            android:textSize="16pt"
+            android:textStyle="bold"
+            tools:text="Messenger" />
+
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textColor="#fcfcfc"
+            android:textSize="16dp"
+            tools:text="This is chat messages" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:id="@+id/viewpucuk"
+        android:background="@android:color/holo_blue_light"
+        android:layout_gravity="center_vertical"
+        android:rotation="45" />
+
+    <Space
+        android:layout_width="8dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/messengerImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical"
+        tools:src="@drawable/ic_account_round" />
+
+    <com.github.curioustechizen.ago.RelativeTimeTextView
+        android:id="@+id/timestamp2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:maxLines="2"
+        android:textColor="@color/common_google_signin_btn_text_light_default"
+        android:textSize="12dp"
+        android:visibility="gone"
+        tools:text="Just Now" />
+
+</LinearLayout>
+
