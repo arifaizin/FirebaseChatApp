@@ -27,6 +27,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.github.curioustechizen.ago.RelativeTimeTextView;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private long mTimestamp;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
     private LinearLayoutManager mLinearLayoutManager;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,6 +236,25 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         messageRecyclerView.setLayoutManager(mLinearLayoutManager);
         messageRecyclerView.setAdapter(mFirebaseAdapter);
+
+        //TODO 8 ADMOB
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("7535AF4EB2936B47ED5B7A27A0547F7F")
+                .build();
+        //banner
+        mAdView = (AdView) findViewById(R.id.adView);
+        mAdView.loadAd(adRequest);
+        //interstial
+        final InterstitialAd interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-8525281163605718/6290308626");
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                interstitialAd.show();
+            }
+        });
+        interstitialAd.loadAd(adRequest);
     }
 
     private void sendNotif(String pesan) {
