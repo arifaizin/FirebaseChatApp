@@ -2,14 +2,16 @@ package id.co.imastudio.firebasefcm;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -29,7 +31,7 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
     private static final String TAG = "AuthenticationActivity";
     private static final int RC_SIGN_IN = 9002;
     private SignInButton mSignInButton;
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleSignInClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -47,10 +49,7 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
                         .build();
 
         //tambah sendiri setelah 1
-        mGoogleApiClient = new GoogleApiClient.Builder(AuthenticationActivity.this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        mGoogleApiClient = GoogleSignIn.getClient(this, gso);
 
         //2
         mAuth = FirebaseAuth.getInstance();
@@ -89,8 +88,7 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
 
     //5
     private void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi
-                .getSignInIntent(mGoogleApiClient);
+        Intent signInIntent = mGoogleApiClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
@@ -109,7 +107,7 @@ public class AuthenticationActivity extends AppCompatActivity implements GoogleA
                 firebaseAuthWithGoogle(account);
             } else {
                 // login gagal
-                Log.e(TAG, "Login Google Gagal.");
+                Log.e(TAG, "Login Google Gagal."+result.getStatus().getStatusMessage());
                 Toast.makeText(this, "Login Google Gagal.", Toast.LENGTH_SHORT).show();
             }
         }

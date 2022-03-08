@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FirebaseFCM.iml" filepath="$PROJECT_DIR$/FirebaseFCM.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FirebaseChatApp.iml" filepath="$PROJECT_DIR$/.idea/modules/FirebaseChatApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FirebaseChatApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FirebaseChatApp.app.iml" />
     </modules>
   </component>
 </project>
